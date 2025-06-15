@@ -50,20 +50,7 @@ require("lazy").setup({
 {
   "neovim/nvim-lspconfig",
   config = function()
-    local lspconfig = require("lspconfig")
-
-    -- Go LSP
-    lspconfig.gopls.setup({
-      settings = {
-        gopls = {
-          analyses = {
-            unusedparams = true,
-            shadow = true,
-          },
-          staticcheck = true,
-        },
-      },
-    })
+    require("lsp")  -- This will load your per-language LSP configs
   end,
 },
 {
