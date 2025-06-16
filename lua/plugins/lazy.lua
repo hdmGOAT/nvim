@@ -80,13 +80,11 @@ require("lazy").setup({
 },
 {
   "folke/trouble.nvim",
+  cmd = { "Trouble" }, -- load on command
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  opts = {},
-  keys = {
-    { "<leader>xx", "<cmd>TroubleToggle<cr>", desc = "Toggle Trouble (diagnostics)" },
-  },
-},
-
-
+  config = function()
+    require("trouble").setup({})
+  end,
+}
 
 })
