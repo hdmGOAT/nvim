@@ -43,7 +43,7 @@ require("lazy").setup({
   dependencies = { "williamboman/mason.nvim" },
   config = function()
     require("mason-lspconfig").setup({
-      ensure_installed = { "gopls" }, -- ensures gopls gets installed
+      ensure_installed = { "gopls", "rust_analyzer" }, -- ensures gopls gets installed
     })
   end,
 },
