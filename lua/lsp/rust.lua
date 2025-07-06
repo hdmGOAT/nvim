@@ -1,7 +1,6 @@
 local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
--- Add enhanced capabilities for completion
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
 lspconfig.rust_analyzer.setup({
@@ -11,9 +10,10 @@ lspconfig.rust_analyzer.setup({
       cargo = {
         allFeatures = true,
       },
-      checkOnSave = {
-        command = "clippy", -- Ensures Clippy runs on save
+      check = {
+        command = "clippy", -- Run Clippy instead of "check"
       },
+      checkOnSave = true, -- Simply enable check-on-save
       inlayHints = {
         enable = true,
       },
