@@ -7,6 +7,7 @@ lspconfig.rust_analyzer.setup({
   capabilities = capabilities,
   settings = {
     ["rust-analyzer"] = {
+      linkedProjects = { "Cargo.toml"},
       cargo = {
         allFeatures = true,
       },
