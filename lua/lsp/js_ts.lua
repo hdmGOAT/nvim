@@ -5,7 +5,7 @@ local cmp_nvim_lsp = require("cmp_nvim_lsp")
 -- Optional: Add capabilities for better completion support
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
   capabilities = capabilities,
   settings = {
     typescript = {
