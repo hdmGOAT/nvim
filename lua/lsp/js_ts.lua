@@ -7,6 +7,13 @@ local capabilities = cmp_nvim_lsp.default_capabilities()
 
 lspconfig.ts_ls.setup({
   capabilities = capabilities,
+  filetypes = {
+    "javascript",
+    "javascriptreact", -- React JSX
+    "typescript",
+    "typescriptreact", -- React TSX
+    "json"
+  },
   settings = {
     typescript = {
       inlayHints = {
