@@ -8,6 +8,7 @@ vim.keymap.set("v", "<Tab>", ">gv", opts)
 vim.keymap.set("v", "<S-Tab>", "<gv", opts)
 
 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
+vim.keymap.set("n", "<leader>w", "<cmd>NvimTreeFocus<CR>", opts)
 
 vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<CR>", opts)
 vim.keymap.set("n", "<leader>xw", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>", opts)

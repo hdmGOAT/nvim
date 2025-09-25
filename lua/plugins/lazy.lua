@@ -7,6 +7,11 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   -- Theme
   { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
+  {
+  	"rafamadriz/friendly-snippets",
+  	lazy = true,
+  },
+
 
   -- File tree
   {
@@ -99,6 +104,7 @@ require("lazy").setup({
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "L3MON4D3/LuaSnip",
+    "rafamadriz/friendly-snippets",
   },
   config = function()
     local cmp = require("cmp")
@@ -115,8 +121,10 @@ require("lazy").setup({
       }),
       sources = {
         { name = "nvim_lsp" },
+	{ name = "luasnip" },
       },
     })
+  require("luasnip.loaders.from_vscode").lazy_load()
   end,
 },
 {
