@@ -141,14 +141,10 @@ require("lazy").setup({
   "lervag/vimtex",
   ft = "tex",  -- only load for .tex files
   config = function()
+    vim.g.vimtex_mappings_enabled = 0        -- Disable default mappings
     vim.g.vimtex_view_method = 'zathura'      -- PDF viewer
     vim.g.vimtex_compiler_method = 'latexmk' -- automatic compilation
     vim.g.vimtex_quickfix_mode = 0           -- disable automatic jump to errors
-
-    -- Optional key mappings
-    vim.keymap.set('n', '<leader>ll', ':VimtexCompile<CR>')
-    vim.keymap.set('n', '<leader>lv', ':VimtexView<CR>')
-    vim.keymap.set('n', '<leader>li', ':VimtexStop<CR>')
   end,
 }
 })

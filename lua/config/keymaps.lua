@@ -1,121 +1,50 @@
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-local opts = { noremap = true, silent = true }
+local function map(mode, lhs, rhs, desc)
+  vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true, desc = desc })
+end
 
-vim.keymap.set("v", "<Tab>", ">gv", opts)
-vim.keymap.set("v", "<S-Tab>", "<gv", opts)
+-- Indentation
+map("v", "<Tab>", ">gv", "Indent line")
+map("v", "<S-Tab>", "<gv", "Unindent line")
 
-vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
-vim.keymap.set("n", "<leader>w", "<cmd>NvimTreeFocus<CR>", opts)
+-- NvimTree
+map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", "Toggle Explorer")
+map("n", "<leader>w", "<cmd>NvimTreeFocus<CR>", "Focus Explorer")
 
-vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<CR>", opts)
-vim.keymap.set("n", "<leader>xw", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>", opts)
-vim.keymap.set("n", "<leader>xd", "<cmd>Trouble diagnostics toggle filter.buf=1<CR>", opts)
-vim.keymap.set("n", "<leader>xq", "<cmd>Trouble quickfix toggle<CR>", opts)
-vim.keymap.set("n", "<leader>xl", "<cmd>Trouble loclist toggle<CR>", opts)
+-- Trouble
+map("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<CR>", "Toggle Trouble (Diagnostics)")
+map("n", "<leader>xw", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>", "Trouble (Workspace Diagnostics)")
+map("n", "<leader>xd", "<cmd>Trouble diagnostics toggle filter.buf=1<CR>", "Trouble (Document Diagnostics)")
+map("n", "<leader>xq", "<cmd>Trouble quickfix toggle<CR>", "Trouble (Quickfix)")
+map("n", "<leader>xl", "<cmd>Trouble loclist toggle<CR>", "Trouble (Loclist)")
 
-vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
-vim.keymap.set("n", "<C-j>", "<C-w>j", opts)
-vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
-vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
+-- Window Navigation
+map("n", "<C-h>", "<C-w>h", "Navigate Left")
+map("n", "<C-j>", "<C-w>j", "Navigate Down")
+map("n", "<C-k>", "<C-w>k", "Navigate Up")
+map("n", "<C-l>", "<C-w>l", "Navigate Right")
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
+-- Move Lines
+map("v", "J", ":m '>+1<CR>gv=gv", "Move line down")
+map("v", "K", ":m '<-2<CR>gv=gv", "Move line up")
 
-vim.keymap.set("n", "n", "nzzzv", opts)
-vim.keymap.set("n", "N", "Nzzzv", opts)
+-- Search
+map("n", "n", "nzzzv", "Next search result (centered)")
+map("n", "N", "Nzzzv", "Previous search result (centered)")
+map("n", "<leader>h", "<cmd>nohlsearch<CR>", "Clear search highlights")
 
+-- Keymaps Help
+vim.api.nvim_create_user_command("Keymaps", function()
+  vim.cmd("vsplit " .. vim.fn.stdpath("config") .. "/lua/config/keymaps.lua")
+  vim.cmd("setlocal readonly")
+  vim.cmd("setlocal nomodifiable")
+end, { desc = "Open keymaps configuration as a manual" })
 
+map("n", "<leader>?", "<cmd>Keymaps<CR>", "Show Keymaps Manual")
 
-
-
-vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
-vim.keymap.set("n", "<C-j>", "<C-w>j", opts)
-
-vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
-vim.keymap.set("n", "<C-j>", "<C-w>j", opts)
-vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
-
-vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
-vim.keymap.set("n", "<C-j>", "<C-w>j", opts)
-vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
-vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
-
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
-
-vim.keymap.set("n", "n", "nzzzv", opts)
-vim.keymap.set("n", "N", "Nzzzv", opts)
-
-vim.keymap.set("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
-vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
-
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
-
-vim.keymap.set("n", "n", "nzzzv", opts)
-vim.keymap.set("n", "N", "Nzzzv", opts)
-
-vim.keymap.set("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
-vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
-vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
-
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
-
-vim.keymap.set("n", "n", "nzzzv", opts)
-vim.keymap.set("n", "N", "Nzzzv", opts)
-
-vim.keymap.set("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
-vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
-vim.keymap.set("n", "<C-j>", "<C-w>j", opts)
-vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
-vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
-
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
-
-vim.keymap.set("n", "n", "nzzzv", opts)
-vim.keymap.set("n", "N", "Nzzzv", opts)
-
-vim.keymap.set("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
-vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
-vim.keymap.set("n", "<C-j>", "<C-w>j", opts)
-vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
-vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
-
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
-
-vim.keymap.set("n", "n", "nzzzv", opts)
-vim.keymap.set("n", "N", "Nzzzv", opts)
-
-vim.keymap.set("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
-vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
-vim.keymap.set("n", "<C-j>", "<C-w>j", opts)
-vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
-vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
-
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
-
-vim.keymap.set("n", "n", "nzzzv", opts)
-vim.keymap.set("n", "N", "Nzzzv", opts)
-
-vim.keymap.set("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
-vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
-vim.keymap.set("n", "<C-j>", "<C-w>j", opts)
-vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
-vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
-
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
-
-vim.keymap.set("n", "n", "nzzzv", opts)
-vim.keymap.set("n", "N", "Nzzzv", opts)
-
-vim.keymap.set("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
-
-vim.keymap.set("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
+-- LaTeX (VimTeX)
+map("n", "<leader>ll", ":VimtexCompile<CR>", "VimTeX Compile")
+map("n", "<leader>lv", ":VimtexView<CR>", "VimTeX View")
+map("n", "<leader>li", ":VimtexStop<CR>", "VimTeX Stop")
