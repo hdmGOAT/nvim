@@ -6,8 +6,8 @@ vim.lsp.config('texlab', {
   settings = {
     texlab = {
       build = {
-        onSave = true,
-        forwardSearchAfter = true,
+        onSave = false,        -- Disable TexLab build (let VimTeX handle it)
+        forwardSearchAfter = false,
       },
       chktex = {
         onOpenAndSave = true,

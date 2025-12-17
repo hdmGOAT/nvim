@@ -140,11 +140,21 @@ require("lazy").setup({
 {
   "lervag/vimtex",
   ft = "tex",  -- only load for .tex files
-  config = function()
+  init = function()
     vim.g.vimtex_mappings_enabled = 0        -- Disable default mappings
     vim.g.vimtex_view_method = 'zathura'      -- PDF viewer
     vim.g.vimtex_compiler_method = 'latexmk' -- automatic compilation
     vim.g.vimtex_quickfix_mode = 0           -- disable automatic jump to errors
+    vim.g.vimtex_compiler_latexmk = {
+      build_dir = 'build',
+      options = {
+        '-shell-escape',
+        '-verbose',
+        '-file-line-error',
+        '-synctex=1',
+        '-interaction=nonstopmode',
+      },
+    }
   end,
 }
 })
