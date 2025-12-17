@@ -88,6 +88,7 @@ require("lazy").setup({
         "pyright",        -- Python
         "ts_ls",          -- TypeScript / JavaScript (includes React)
         "svelte",         -- Svelte
+        "texlab",         -- LaTeX
       },
       automatic_installation = true, -- optional: auto-install missing servers
     })
@@ -134,6 +135,20 @@ require("lazy").setup({
   config = function()
     require("trouble").setup({})
   end,
-}
+},
+-- LaTeX support
+{
+  "lervag/vimtex",
+  ft = "tex",  -- only load for .tex files
+  config = function()
+    vim.g.vimtex_view_method = 'zathura'      -- PDF viewer
+    vim.g.vimtex_compiler_method = 'latexmk' -- automatic compilation
+    vim.g.vimtex_quickfix_mode = 0           -- disable automatic jump to errors
 
+    -- Optional key mappings
+    vim.keymap.set('n', '<leader>ll', ':VimtexCompile<CR>')
+    vim.keymap.set('n', '<leader>lv', ':VimtexView<CR>')
+    vim.keymap.set('n', '<leader>li', ':VimtexStop<CR>')
+  end,
+}
 })

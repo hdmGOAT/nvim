@@ -1,6 +1,7 @@
-local lspconfig = require("lspconfig")
+local cmp_nvim_lsp = require("cmp_nvim_lsp")
+local capabilities = cmp_nvim_lsp.default_capabilities()
 
-lspconfig.svelte.setup({
+vim.lsp.config('svelte', {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     -- Optional: auto-refresh when Svelte config changes
@@ -14,3 +15,4 @@ lspconfig.svelte.setup({
     end
   end,
 })
+vim.lsp.enable('svelte')

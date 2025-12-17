@@ -1,11 +1,10 @@
 -- lua/lsp/js_ts.lua
-local lspconfig = require("lspconfig")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 -- Optional: Add capabilities for better completion support
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
-lspconfig.ts_ls.setup({
+vim.lsp.config('ts_ls', {
   capabilities = capabilities,
   filetypes = {
     "javascript",
@@ -39,3 +38,4 @@ lspconfig.ts_ls.setup({
     },
   },
 })
+vim.lsp.enable('ts_ls')

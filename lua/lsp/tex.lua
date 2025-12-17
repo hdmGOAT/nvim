@@ -1,0 +1,23 @@
+local cmp_nvim_lsp = require("cmp_nvim_lsp")
+local capabilities = cmp_nvim_lsp.default_capabilities()
+
+vim.lsp.config('texlab', {
+  capabilities = capabilities,
+  settings = {
+    texlab = {
+      build = {
+        onSave = true,
+        forwardSearchAfter = true,
+      },
+      chktex = {
+        onOpenAndSave = true,
+        onEdit = true,
+      },
+      forwardSearch = {
+        executable = "zathura",
+        args = { "--synctex-forward", "%l:1:%f", "%p" },
+      },
+    },
+  },
+})
+vim.lsp.enable('texlab')
