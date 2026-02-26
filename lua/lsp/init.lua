@@ -5,6 +5,7 @@ require("lsp.python")
 require("lsp.js_ts")
 require("lsp.svelte")
 require("lsp.tex")
+require("lsp.cpp")
 
 
 vim.diagnostic.config({

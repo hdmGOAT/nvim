@@ -61,6 +61,8 @@ require("lazy").setup({
         "json",
         "html",
         "css",
+        "c",       -- C highlights
+        "cpp",     -- C++ highlights
       },
       highlight = { enable = true },
       indent = { enable = true },
@@ -89,6 +91,7 @@ require("lazy").setup({
         "ts_ls",          -- TypeScript / JavaScript (includes React)
         "svelte",         -- Svelte
         "texlab",         -- LaTeX
+        "clangd",         -- C/C++
       },
       automatic_installation = true, -- optional: auto-install missing servers
     })
