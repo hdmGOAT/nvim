@@ -5,6 +5,12 @@ local capabilities = cmp_nvim_lsp.default_capabilities()
 -- Setup clangd for C/C++
 vim.lsp.config('clangd', {
   capabilities = capabilities,
+  root_markers = {
+    "compile_commands.json",
+    "compile_flags.txt",
+    ".clangd",
+    ".git",
+  },
   cmd = {
     "clangd",
     "--background-index",
@@ -18,6 +24,10 @@ vim.lsp.config('clangd', {
     usePlaceholders = true,
     completeUnimported = true,
     clangdFileStatus = true,
+    fallbackFlags = {
+      "-Isrc",
+      "-Iinclude",
+    },
   },
 })
 vim.lsp.enable('clangd')
