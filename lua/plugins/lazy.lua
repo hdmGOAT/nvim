@@ -58,6 +58,7 @@ require("lazy").setup({
         "typescript",
         "tsx",     -- React (.tsx)
         "svelte",  -- Svelte
+        "astro",   -- Astro
         "json",
         "html",
         "css",
@@ -90,6 +91,7 @@ require("lazy").setup({
         "pyright",        -- Python
         "ts_ls",          -- TypeScript / JavaScript (includes React)
         "svelte",         -- Svelte
+        "astro",          -- Astro
         "texlab",         -- LaTeX
         "clangd",         -- C/C++
       },

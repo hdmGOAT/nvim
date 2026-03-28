@@ -4,6 +4,7 @@ require("lsp.rust")
 require("lsp.python")
 require("lsp.js_ts")
 require("lsp.svelte")
+require("lsp.astro")
 require("lsp.tex")
 require("lsp.cpp")
 
